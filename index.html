@@ -3,160 +3,876 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabrina Kaduk | Gerente de Marketing de Crecimiento y Rendimiento</title>
-<link href=" https://fonts. googleapis.com/css2?family= Plus+Jakarta+Sans:wght@300; 400;600;700&display=swap " rel="stylesheet">
+<title>Sabrina Kaduk — Growth Marketing & Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root {
---bg-color: #0b0f19;
---card-bg: #161b26;
---accent-color: #38bdf8;
---text-main: #f3f4f6;
---text-muted: #9ca3af;
+  --ink: #1A1A2E;
+  --paper: #F0EDE8;
+  --accent: #7B6FA0;
+  --accent2: #A09060;
+  --muted: #7A7888;
+  --border: #D5D0CC;
+  --surface: #E8E4DD;
+  --white: #FAFAF8;
+  --deep: #2D2A40;
 }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-font-family: 'Plus Jakarta Sans', sans-serif;
-background-color: var(--bg-color);
-color: var(--text-main);
-margin: 0;
-padding: 0;
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: 100vh;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 15px;
+  font-weight: 300;
+  overflow-x: hidden;
 }
 
-.portfolio-card {
-background-color: var(--card-bg);
-border: 1px solid #232d3f;
-border-radius: 24px;
-padding: 40px;
-max-width: 550px;
-width: 90%;
-box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-text-align: center;
+/* ── CANVAS BACKGROUND ── */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
 }
 
-.profile-img {
-width: 110px;
-height: 110px;
-background: linear-gradient(135deg, #38bdf8, #818cf8);
-border-radius: 50%;
-margen: 0 auto 20px;
-mostrar: flex;
-alinear-elementos: centro;
-justificar-contenido: centro;
-tamaño-fuente: 2.5rem;
-peso-fuente: 700;
-color: #0b0f19;
+body > *:not(#bg-canvas) { position: relative; z-index: 1; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ── HEADER ── */
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  background: rgba(240,237,232,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
 }
 
-h1 {
-tamaño-fuente: 1.8rem;
-margen: 0 0 8px 0;
-espaciado-letra: -0.5px;
+.logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: var(--muted);
 }
 
-.subtítulo {
-color: var(--color-de-acento);
-tamaño-fuente: 1rem;
-peso-fuente: 600;
-margen-inferior: 24px;
-transformación-texto: mayúsculas;
-espaciado-letra: 1px;
+nav { display: flex; gap: 32px; font-size: 13px; color: var(--muted); }
+nav a:hover { color: var(--ink); transition: color .2s; }
+
+/* ── HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 56px);
+  border-bottom: 1px solid var(--border);
 }
 
-.contenedor-métrico {
-mostrar: cuadrícula;
-columnas-plantilla-cuadrícula: 1fr 1fr;
-espacio:16px;
-margen inferior: 32px;
+.hero-left {
+  padding: 80px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--border);
 }
 
-.metric-box {
-background-color: #1f2736;
-padding: 16px;
-border-radius: 16px;
-border: 1px solid #2d3748;
+.hero-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
 }
 
-.metric-title {
-font-size: 0.8rem;
-color: var(--text-muted);
-text-transform: uppercase;
-margin-bottom: 4px;
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(56px, 7.5vw, 96px);
+  line-height: .95;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--deep);
 }
 
-.metric-value {
-font-size: 1.4rem;
-font-weight: 700;
-color: #fff;
+.hero-name em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.hero-tagline {
+  margin-top: 32px;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 420px;
+  line-height: 1.7;
+}
+
+.hero-tagline strong { color: var(--ink); font-weight: 500; }
+
+.hero-ctas { display: flex; gap: 12px; margin-top: 44px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 3px;
+  transition: all .2s;
+  cursor: pointer;
+  letter-spacing: .01em;
 }
 
 .btn-primary {
-display: block;
-background-color: var(--accent-color);
-color: #0b0f19;
-text-decoration: none;
-padding: 14px;
-border-radius: 12px;
-font-weight: 700;
-margin-bottom: 12px;
-transition: opacity 0.2s;
+  background: var(--deep);
+  color: var(--white);
+  border: 1px solid var(--deep);
+}
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  padding: 80px 48px;
+  justify-content: space-between;
 }
 
-.btn-primary:hover {
-opacity: 0.9;
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 36px;
 }
 
-.btn-secondary {
-display: block;
-background-color: transparent;
-color: var(--text-main);
-text-decoration: none;
-padding: 14px;
-border-radius: 12px;
-font-weight: 600;
-border: 1px solid #374151;
-transition: background 0.2s;
+.stat-box { background: var(--white); padding: 28px 22px; }
+
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--deep);
 }
 
-.btn-secondary:hover {
-background-color: #1f2736;
+.stat-n span { color: var(--accent); }
+
+.stat-lbl {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 7px;
+  line-height: 1.45;
 }
+
+.about-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+}
+
+.about-text strong { color: var(--ink); font-weight: 500; }
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 20px;
+}
+
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #5BA85A;
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+/* ── SECTIONS ── */
+section { border-bottom: 1px solid var(--border); }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 52px 48px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .1em;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--deep);
+}
+
+/* ── VALOR ── */
+.valor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+}
+
+.valor-col {
+  background: var(--paper);
+  padding: 40px 36px 40px 48px;
+}
+
+.valor-col:nth-child(2) { background: var(--white); }
+
+.valor-cat {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.valor-head {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.3;
+  color: var(--deep);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.valor-head em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+.valor-body { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+.trust-band {
+  padding: 24px 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.trust-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 6px;
+}
+
+.trust-pill {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--deep);
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--white);
+}
+
+.trust-note {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  margin-left: 6px;
+}
+
+/* ── EXPERIENCE ── */
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+.exp-item:last-child { border-bottom: none; }
+.exp-item:hover { background: var(--surface); }
+
+.exp-meta { padding: 36px 32px 36px 48px; border-right: 1px solid var(--border); }
+.exp-period { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: .05em; }
+.exp-company { font-size: 14px; font-weight: 500; margin-top: 8px; color: var(--deep); }
+.exp-loc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.exp-body { padding: 36px 48px; }
+
+.exp-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--deep);
+  margin-bottom: 12px;
+}
+
+.exp-desc { font-size: 14px; color: var(--muted); line-height: 1.75; max-width: 600px; }
+
+.exp-kpi {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  background: rgba(123,111,160,.08);
+  padding: 5px 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(123,111,160,.2);
+}
+
+/* ── SKILLS ── */
+.skills-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+}
+
+.skill-col { background: var(--paper); padding: 36px 28px 36px 44px; }
+.skill-col:nth-child(2) { background: var(--white); }
+.skill-col:nth-child(4) { background: var(--white); }
+
+.skill-cat {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.skill-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+
+.skill-list li {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.skill-list li::before {
+  content: '';
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .5;
+  flex-shrink: 0;
+}
+
+/* ── CERTS ── */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+}
+
+.cert-tile { background: var(--paper); padding: 26px 22px 26px 30px; transition: background .15s; }
+.cert-tile:hover { background: var(--white); }
+.cert-tile:nth-child(even) { background: var(--white); }
+.cert-tile:nth-child(even):hover { background: var(--surface); }
+
+.cert-issuer {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.cert-name { font-size: 13px; font-weight: 500; color: var(--deep); line-height: 1.4; }
+.cert-detail { font-size: 11px; color: var(--muted); margin-top: 7px; font-family: 'DM Mono', monospace; }
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+}
+
+.contact-left { padding: 64px 48px; border-right: 1px solid var(--border); }
+
+.contact-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 360px;
+  margin-bottom: 12px;
+  color: var(--deep);
+}
+
+.contact-tagline em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+.contact-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 14px;
+  max-width: 360px;
+  line-height: 1.7;
+}
+
+.avail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+
+.avail-tag {
+  font-size: 12px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--ink);
+  background: var(--white);
+}
+
+.avail-tag.hi { border-color: var(--accent); color: var(--accent); }
+
+.contact-right { padding: 64px 48px; display: flex; flex-direction: column; justify-content: center; }
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.contact-item:first-child { border-top: 1px solid var(--border); }
+
+.contact-icon {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  width: 72px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.contact-val { font-size: 14px; color: var(--deep); }
+.contact-val a { transition: color .15s; }
+.contact-val a:hover { color: var(--accent); }
 
 footer {
-margin-top: 32px;
-font-size: 0.85rem;
-color:var(--text-muted);
+  padding: 22px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── ANIMATIONS ── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  header { padding: 0 24px; }
+  nav { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left, .hero-right { padding: 48px 24px; border-right: none; }
+  .hero-right { border-top: 1px solid var(--border); }
+  .section-header { padding: 36px 24px 24px; }
+  .exp-item { grid-template-columns: 1fr; }
+  .exp-meta { padding: 24px 24px 0; border-right: none; }
+  .exp-body { padding: 16px 24px 32px; }
+  .valor-grid, .skills-body { grid-template-columns: 1fr 1fr; }
+  .valor-col, .skill-col { padding: 28px 24px; }
+  .certs-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-left, .contact-right { padding: 40px 24px; border-right: none; }
+  footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<div class="portfolio-card">
-<div class="profile-img">SK</div>
-<h1>Sabrina Kaduk</h1>
-<div class="subtitle">Gerente de Marketing de Crecimiento y Rendimiento</div>
+<canvas id="bg-canvas"></canvas>
 
-<div class="metrics-container">
-<div class="metric-box">
-<div class="metric-title"> Especialidad</div>
-<div class="metric-value"> Optimización ROAS</div>
-</div>
-<div class="metric-box">
-<div class="metric-title">Enfoque Core</div>
-<div class="metric-value"> Escalabilidad CLV</div>
-</div>
-</div>
+<header>
+  <div class="logo">sabrina kaduk — 2026</div>
+  <nav>
+    <a href="#valor">Propuesta</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#skills">Skills</a>
+    <a href="#certs">Certificaciones</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
 
-<a href=" https://linkedin.com/in/sabrina-kaduk " target="_blank" class="btn-primary">Conectar en LinkedIn</a>
-<a href="mailto: sabri.kaduk. trabajo@gmail.com " class="btn-secondary">Enviar Correo Electrónico</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left fade-in">
+    <div>
+      <div class="hero-label">Growth · Operations · QA · AI — perfil multidisciplinario</div>
+      <h1 class="hero-name">Sabrina<br><em>Kaduk</em></h1>
+      <p class="hero-tagline">
+        Más de <strong>10 años de experiencia</strong> en multinacionales de España, LATAM y Argentina — construyendo procesos, midiendo resultados y comunicando con creatividad. Un perfil que combina lo analítico con lo creativo, y que sabe cuándo usar cada uno.
+      </p>
+      <div class="hero-ctas">
+        <a href="mailto:sabri.kaduk.trabajo@gmail.com" class="btn btn-primary">Trabajemos juntos</a>
+        <a href="https://linkedin.com/in/sabrina-kaduk" target="_blank" class="btn btn-outline">LinkedIn</a>
+        <a href="https://github.com/sabrikaduktrabajo-ctrl" target="_blank" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+    <div class="availability">
+      <span class="dot"></span>
+      Disponible ahora · Remote worldwide · Argentina &amp; Kenia
+    </div>
+  </div>
+
+  <div class="hero-right fade-in" style="transition-delay:.18s">
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-n">10<span>+</span></div>
+        <div class="stat-lbl">años en multinacionales — España, LATAM, Argentina</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">98<span>%</span></div>
+        <div class="stat-lbl">tasa de éxito operativo — 100 casos/día en Falabella</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">−5<span>pp</span></div>
+        <div class="stat-lbl">reducción de costos medibles en Prosegur — 0 errores</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">3<span>×</span></div>
+        <div class="stat-lbl">disciplinas integradas: marketing · operaciones · calidad</div>
+      </div>
+    </div>
+
+    <p class="about-text">
+      Mi trayectoria combina rigor analítico con sensibilidad creativa — algo que se construye con años de trabajo real en entornos exigentes. <strong>Entiendo el negocio desde adentro, lo que me permite proponer estrategias que funcionan y comunicar resultados que se entienden.</strong> Sé cuándo los datos guían la decisión y cuándo la creatividad marca la diferencia.
+    </p>
+
+    <div class="availability" style="margin-top:16px">
+      Buenos Aires · Argentina &nbsp;|&nbsp; Nairobi · Kenia
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA DE VALOR -->
+<section id="valor">
+  <div class="section-header fade-in">
+    <span class="section-num">00</span>
+    <h2 class="section-title">Lo que traigo a tu equipo</h2>
+  </div>
+
+  <div class="valor-grid">
+    <div class="valor-col fade-in">
+      <div class="valor-cat">Creatividad con propósito</div>
+      <p class="valor-head">Campañas que <em>comunican bien</em> y que generan resultados medibles.</p>
+      <p class="valor-body">Diseño estrategias de contenido y campañas pagas con un objetivo claro — CTR, conversión, retención — y con el criterio creativo para que la pieza también se vea bien. Google Ads, Meta, TikTok Shop: plataformas certificadas, usadas con intención.</p>
+    </div>
+
+    <div class="valor-col fade-in" style="transition-delay:.1s">
+      <div class="valor-cat">Operaciones que escalan</div>
+      <p class="valor-head">Procesos diseñados para <em>crecer sin romperse.</em></p>
+      <p class="valor-body">Trabajé en entornos de alto volumen y alta exigencia dentro de multinacionales reales. Sé documentar, optimizar y monitorear para que los sistemas funcionen de forma sostenida — y para que el equipo pueda crecer sin depender de una sola persona.</p>
+    </div>
+
+    <div class="valor-col fade-in" style="transition-delay:.2s">
+      <div class="valor-cat">Visión técnica y de calidad</div>
+      <p class="valor-head">La perspectiva que <em>detecta lo que otros no ven</em> antes de que sea un problema.</p>
+      <p class="valor-body">La formación en QA no es un agregado — es lo que hace diferente mi mirada. Entro a un proceso o campaña con el ojo puesto en los detalles que marcan la diferencia entre algo que funciona bien y algo que funciona muy bien.</p>
+    </div>
+  </div>
+
+  <div class="trust-band fade-in">
+    <span class="trust-label">Experiencia en</span>
+    <span class="trust-pill">Prosegur</span>
+    <span class="trust-pill">Falabella / FPAY</span>
+    <span class="trust-pill">YPF</span>
+    <span class="trust-note">España · LATAM · Argentina · +10 años</span>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Trayectoria en multinacionales</h2>
+  </div>
+
+  <div>
+    <div class="exp-item fade-in">
+      <div class="exp-meta">
+        <div class="exp-period">Nov 2023 → Hoy</div>
+        <div class="exp-company">Prosegur</div>
+        <div class="exp-loc">Multinacional · España</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Senior Prediction & Operations Analyst</div>
+        <p class="exp-desc">Dentro de uno de los grupos de seguridad más grandes del mundo, lideré la optimización de procesos críticos de cash management con alcance en Europa. Construí dashboards de KPI para dirección senior, apliqué SQL para detección de anomalías en tiempo real y coordiné equipos remotos en distintas zonas horarias. El resultado fue concreto: de 30% a 25% de remittance rate con cero errores de cash-out — superando el objetivo establecido.</p>
+        <div class="exp-kpi">↓ Remittance rate: 30% → 25% · 0 cash-out record · Alcance Europa</div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div class="exp-meta">
+        <div class="exp-period">Jun 2021 → Sep 2023</div>
+        <div class="exp-company">FPAY / Falabella</div>
+        <div class="exp-loc">Multinacional · LATAM</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Senior Prediction & Process Analyst</div>
+        <p class="exp-desc">En el brazo fintech del mayor retailer de Sudamérica, gestioné onboarding digital a escala: 100 casos diarios con 98% de tasa de éxito — equivalente a operar un funnel de e-commerce de alto tráfico. Colaboré con equipos de producto y tecnología para reducir fricción en flujos clave, documenté workflows en Jira y Confluence, y lideré iniciativas de mejora continua bajo Agile/Scrum en un entorno donde cada error tiene costo directo sobre la conversión.</p>
+        <div class="exp-kpi">↑ 98% tasa de éxito · 100 casos/día · Mejora de flujos de activación</div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div class="exp-meta">
+        <div class="exp-period">Jun 2017 → Jun 2020</div>
+        <div class="exp-company">YPF</div>
+        <div class="exp-loc">Corporación · Argentina</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Analista Comercial</div>
+        <p class="exp-desc">En la empresa energética más grande de Argentina desarrollé la base analítica que aplico hoy en cada proyecto. Análisis histórico de ventas, construcción de reportes ejecutivos de KPI para liderazgo senior y gestión de relaciones comerciales con clientes internos y externos en todo el país. El entorno corporativo de alta exigencia me formó en precisión, comunicación ejecutiva y capacidad de traducir datos complejos en decisiones claras.</p>
+        <div class="exp-kpi">→ Dashboards ejecutivos · Gestión comercial nacional · Análisis de tendencias</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Stack completo</h2>
+  </div>
+
+  <div class="skills-body">
+    <div class="skill-col fade-in">
+      <div class="skill-cat">Performance &amp; Growth</div>
+      <ul class="skill-list">
+        <li>Google Ads — certificada 2026</li>
+        <li>Meta Ads (Facebook &amp; Instagram)</li>
+        <li>TikTok Shop Seller Center</li>
+        <li>Instagram Shop / Meta Commerce</li>
+        <li>SEO / SEM estratégico</li>
+        <li>CRO — optimización de conversión</li>
+        <li>A/B Testing y funnel design</li>
+        <li>Estrategia de contenido con IA</li>
+        <li>Canva &amp; Canva AI</li>
+      </ul>
+    </div>
+    <div class="skill-col fade-in" style="transition-delay:.1s">
+      <div class="skill-cat">Data &amp; Operaciones</div>
+      <ul class="skill-list">
+        <li>SQL — análisis y anomalías</li>
+        <li>KPI dashboards para management</li>
+        <li>Google Analytics</li>
+        <li>Excel avanzado</li>
+        <li>Jira &amp; Confluence</li>
+        <li>Gestión Agile / Scrum</li>
+        <li>PDCA &amp; root cause analysis</li>
+        <li>Documentación de procesos</li>
+        <li>Coordinación de equipos remotos</li>
+      </ul>
+    </div>
+    <div class="skill-col fade-in" style="transition-delay:.2s">
+      <div class="skill-cat">QA &amp; Calidad</div>
+      <ul class="skill-list">
+        <li>Testing manual y funcional</li>
+        <li>Diseño de casos de prueba</li>
+        <li>Bug reporting estructurado</li>
+        <li>API Testing</li>
+        <li>Verificación de onboarding</li>
+        <li>Control de calidad operativa</li>
+        <li>Selenium (en formación activa)</li>
+        <li>ISTQB prep (en curso)</li>
+      </ul>
+    </div>
+    <div class="skill-col fade-in" style="transition-delay:.3s">
+      <div class="skill-cat">IA &amp; Tecnología</div>
+      <ul class="skill-list">
+        <li>IA Práctica para Marketing — Google</li>
+        <li>OOP con IA — EducaciónIT</li>
+        <li>Automatización de contenido con IA</li>
+        <li>Java — base sólida</li>
+        <li>DevOps — introducción aplicada</li>
+        <li>Bases de datos &amp; SQL</li>
+        <li>GitHub</li>
+        <li>Scrum fundamentals</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Certificaciones — 2025 / 2026</h2>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-tile fade-in"><div class="cert-issuer">Google</div><div class="cert-name">Growth Marketing Strategies</div><div class="cert-detail">May 2026 · 8 hs · 2 módulos</div></div>
+    <div class="cert-tile fade-in"><div class="cert-issuer">Google</div><div class="cert-name">IA Práctica para Marketing</div><div class="cert-detail">May 2026 · 2 hs · 2 módulos</div></div>
+    <div class="cert-tile fade-in"><div class="cert-issuer">EducaciónIT</div><div class="cert-name">Google Ads</div><div class="cert-detail">May 2026 · 15 hs</div></div>
+    <div class="cert-tile fade-in"><div class="cert-issuer">EducaciónIT</div><div class="cert-name">Tester QA Experto</div><div class="cert-detail">Nov 2025 · 18 hs</div></div>
+    <div class="cert-tile fade-in"><div class="cert-issuer">EducaciónIT</div><div class="cert-name">Tester QA Manual</div><div class="cert-detail">Jun 2025 · 18 hs</div></div>
+    <div class="cert-tile fade-in"><div class="cert-issuer">EducaciónIT</div><div class="cert-name">Scrum Fundamentos</div><div class="cert-detail">Ago 2025 · 12 hs</div></div>
+    <div class="cert-tile fade-in"><div class="cert-issuer">EducaciónIT</div><div class="cert-name">OOP con Inteligencia Artificial</div><div class="cert-detail">Ago 2025 · 12 hs</div></div>
+    <div class="cert-tile fade-in"><div class="cert-issuer">EducaciónIT</div><div class="cert-name">Java · DevOps · SQL</div><div class="cert-detail">2025 · 44 hs combinadas</div></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contact-grid">
+    <div class="contact-left fade-in">
+      <div class="section-num" style="margin-bottom:16px">04</div>
+      <h2 class="contact-tagline">¿Buscás a alguien que <em>combine visión creativa con resultados reales?</em></h2>
+      <p class="contact-sub">
+        Disponible para internships, proyectos freelance, roles part-time y posiciones full-time remotas en marketing digital, operaciones y QA. Trabajo con equipos distribuidos en distintas zonas horarias — es algo que llevo haciendo más de diez años.
+      </p>
+      <div class="avail-tags">
+        <span class="avail-tag">Internship</span>
+        <span class="avail-tag">Freelance</span>
+        <span class="avail-tag">Part-time</span>
+        <span class="avail-tag">Proyecto</span>
+        <span class="avail-tag hi">Full-time remoto</span>
+      </div>
+      <div class="availability" style="margin-top:24px">
+        <span class="dot"></span>
+        Activamente en búsqueda · Respuesta en menos de 24 hs
+      </div>
+    </div>
+
+    <div class="contact-right fade-in" style="transition-delay:.15s">
+      <div class="contact-item">
+        <div class="contact-icon">Email</div>
+        <div class="contact-val"><a href="mailto:sabri.kaduk.trabajo@gmail.com">sabri.kaduk.trabajo@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">WhatsApp AR</div>
+        <div class="contact-val"><a href="https://wa.me/5491132409745" target="_blank">+54 9 11 3240-9745</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">WhatsApp KE</div>
+        <div class="contact-val"><a href="https://wa.me/254739819277" target="_blank">+254 739 819 277</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">LinkedIn</div>
+        <div class="contact-val"><a href="https://linkedin.com/in/sabrina-kaduk" target="_blank">linkedin.com/in/sabrina-kaduk</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">GitHub</div>
+        <div class="contact-val"><a href="https://github.com/sabrikaduktrabajo-ctrl" target="_blank">sabrikaduktrabajo-ctrl</a></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-© 2026 • Diseñado para Impacto y Rendimiento
+  <span>© 2026 Sabrina Kaduk — Growth · Operations · QA</span>
+  <span>Buenos Aires · Nairobi · Remote worldwide</span>
 </footer>
-</div>
 
+<script>
+// ── Scroll fade ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// ── Animated background ──
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, blobs;
+
+const COLORS = [
+  [123, 111, 160],  // accent purple
+  [160, 144, 96],   // accent gold
+  [180, 170, 200],  // soft lavender
+  [210, 195, 165],  // warm sand
+];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function initBlobs() {
+  blobs = Array.from({length: 6}, (_, i) => ({
+    x: Math.random() * W,
+    y: Math.random() * H,
+    r: 180 + Math.random() * 220,
+    vx: (Math.random() - 0.5) * 0.18,
+    vy: (Math.random() - 0.5) * 0.18,
+    color: COLORS[i % COLORS.length],
+    phase: Math.random() * Math.PI * 2,
+  }));
+}
+
+function draw(t) {
+  ctx.clearRect(0, 0, W, H);
+  blobs.forEach(b => {
+    b.phase += 0.003;
+    b.x += b.vx + Math.sin(b.phase) * 0.12;
+    b.y += b.vy + Math.cos(b.phase * 0.7) * 0.10;
+    if (b.x < -b.r) b.x = W + b.r;
+    if (b.x > W + b.r) b.x = -b.r;
+    if (b.y < -b.r) b.y = H + b.r;
+    if (b.y > H + b.r) b.y = -b.r;
+
+    const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+    const [r, g2, bl] = b.color;
+    g.addColorStop(0, `rgba(${r},${g2},${bl},0.13)`);
+    g.addColorStop(0.5, `rgba(${r},${g2},${bl},0.05)`);
+    g.addColorStop(1, `rgba(${r},${g2},${bl},0)`);
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+    ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+
+resize();
+initBlobs();
+requestAnimationFrame(draw);
+window.addEventListener('resize', () => { resize(); });
+</script>
 </body>
 </html>
